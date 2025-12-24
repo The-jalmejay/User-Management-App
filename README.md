@@ -32,7 +32,7 @@ The app fetches user data from an API, displays it in a list, supports searching
 ## Installation & Setup
 
 1. Clone repository
-git clone https://github.com/YOUR_USERNAME/User-Management-App.git
+git clone https://github.com/The-jalmejay/User-Management-App.git
 cd User-Management-App
 
 2. Install dependencies
