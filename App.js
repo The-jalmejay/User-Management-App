@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from "react";
+import { View } from "react-native";
+import * as Notifications from "expo-notifications";
+import UserListScreen from "./screens/UserListScreen";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowBanner: true,
+    shouldShowAlert: false,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+    shouldShowList: true
+  }),
+});
+
 
 export default function App() {
+  const requestPermission = async () => {
+    await Notifications.requestPermissionsAsync();
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <UserListScreen />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
